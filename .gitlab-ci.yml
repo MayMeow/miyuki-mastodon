@@ -65,6 +65,8 @@ lintDebug:
   stage: build
   script:
     - ./gradlew -Pci --console=plain :app:lintDebug -PbuildDir=lint
+  tags:
+    - hetzner
 
 # Make Project
 assembleDebug:
@@ -75,6 +77,8 @@ assembleDebug:
   artifacts:
     paths:
       - app/build/outputs/
+  tags:
+    - hetzner
 
 # Run all tests, if any fails, interrupt the pipeline(fail it)
 debugTests:
@@ -82,3 +86,5 @@ debugTests:
   stage: test
   script:
     - ./gradlew -Pci --console=plain :app:testDebug
+  tags:
+    - hetzner
