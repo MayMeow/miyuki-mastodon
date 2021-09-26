@@ -55,6 +55,8 @@ before_script:
   - sdkmanager --sdk_root=${ANDROID_HOME} "platform-tools"
   - sdkmanager --sdk_root=${ANDROID_HOME} "build-tools;${ANDROID_BUILD_TOOLS}"
 
+  # disable daemon
+  - echo 'g.gradle.daemon=false' >> ./gradle.properties
   # Not necessary, but just for surity
   - chmod +x ./gradlew
 
@@ -65,7 +67,7 @@ assembleDebug:
   interruptible: true
   stage: build
   script:
-    - ./gradlew -Dorg.gradle.jvmargs=-Xmx1536m --no-daemon assembleDebug
+    - ./gradlew --no-daemon assembleDebug
   artifacts:
     paths:
       - app/build/outputs/
