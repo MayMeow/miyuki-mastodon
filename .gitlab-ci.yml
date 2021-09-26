@@ -65,7 +65,7 @@ assembleDebug:
   interruptible: true
   stage: build
   script:
-    - ./gradlew --no-daemon assembleDebug
+    - ./gradlew -Dorg.gradle.jvmargs=-Xmx1536m --no-daemon assembleDebug
   artifacts:
     paths:
       - app/build/outputs/
