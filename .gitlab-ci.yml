@@ -72,7 +72,7 @@ assembleDebug:
     paths:
       - app/build/outputs/
   tags:
-    - homeserver
+    - hetzner
 
 # Run all tests, if any fails, interrupt the pipeline(fail it)
 debugTests:
@@ -81,4 +81,4 @@ debugTests:
   script:
     - ./gradlew -Pci --console=plain :app:testDebug
   tags:
-    - homeserver
+    - hetzner
