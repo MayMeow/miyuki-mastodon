@@ -12,7 +12,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: APK build action
-      uses: MayMeow/apk-build-action@v2
+      uses: MayMeow/apk-build-action@v3
       with:
         android-compile-sdk: "30"
         android-build-tools: "30.0.2"
