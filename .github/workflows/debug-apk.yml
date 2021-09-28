@@ -19,8 +19,8 @@ jobs:
         android-sdk-tools: "6514223"
     - name: publish to slack
       env:
-        SLACK_CHANNEL_ACCESS_TOKEN: ${{ secret.SLACK_CHANNEL_ACCESS_TOKEN }}
-        SLACK_CHANNEL_ID: ${{ secret.SLACK_CHANNEL_ID }}
+        SLACK_CHANNEL_ACCESS_TOKEN: ${{ secrets.SLACK_CHANNEL_ACCESS_TOKEN }}
+        SLACK_CHANNEL_ID: ${{ secrets.SLACK_CHANNEL_ID }}
       run: |
         curl \
         -F token="${SLACK_CHANNEL_ACCESS_TOKEN}" \
