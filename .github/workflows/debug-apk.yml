@@ -17,3 +17,15 @@ jobs:
         android-compile-sdk: "30"
         android-build-tools: "30.0.2"
         android-sdk-tools: "6514223"
+    - name: publish to slack
+      env:
+        SLACK_CHANNEL_ACCESS_TOKEN: ${{ secret.SLACK_CHANNEL_ACCESS_TOKEN }}
+        SLACK_CHANNEL_ID: ${{ secret.SLACK_CHANNEL_ID }}
+      run: |
+        curl \
+        -F token="${SLACK_CHANNEL_ACCESS_TOKEN}" \
+        -F channels="${SLACK_CHANNEL_ID}" \
+        -F initial_comment="Hey there! Here is the APK of *${GITHUB_REF}* branch (Ticket ${GITHUB_RUN_ID} Success :tada:)" \
+        -F "file=@$(find app/build/outputs/apk -name 'app-blue*')" \
+        https://slack.com/api/files.upload
+
