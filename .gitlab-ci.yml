@@ -77,11 +77,3 @@ assembleDebug:
   tags:
     - hetzner
 
-# Run all tests, if any fails, interrupt the pipeline(fail it)
-debugTests:
-  interruptible: true
-  stage: test
-  script:
-    - ./gradlew -Pci --console=plain :app:testDebug
-  tags:
-    - hetzner
