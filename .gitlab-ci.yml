@@ -71,6 +71,14 @@ assembleDebug:
   stage: build
   script:
     - ./gradlew --no-daemon assembleDebug
+    - |
+      curl \
+        -F token="${SLACK_CHANNEL_ACCESS_TOKEN}" \
+        -F channels="${SLACK_CHANNEL_ID}" \
+        -F initial_comment="Hey there! Here is the APK of *${CI_COMMIT_REF_NAME}* branch (Ticket ${CI_PIPELINE_ID} Success :tada:)" \
+        -F "file=@$(find app/build/outputs/apk -name 'app-blue*')" \
+        https://slack.com/api/files.upload
+
   artifacts:
     paths:
       - app/build/outputs/
