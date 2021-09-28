@@ -503,7 +503,7 @@ class ComposeViewModel @Inject constructor(
 
 fun <T> mutableLiveData(default: T) = MutableLiveData<T>().apply { value = default }
 
-const val DEFAULT_CHARACTER_LIMIT = 500
+const val DEFAULT_CHARACTER_LIMIT = 1000
 private const val DEFAULT_MAX_OPTION_COUNT = 4
 private const val DEFAULT_MAX_OPTION_LENGTH = 25
 
