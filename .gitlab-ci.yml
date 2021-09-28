@@ -60,6 +60,9 @@ before_script:
   # Not necessary, but just for surity
   - chmod +x ./gradlew
 
+  # Show free memory
+  - free -m
+
 # Basic android and gradle stuff
 
 # Make Project
