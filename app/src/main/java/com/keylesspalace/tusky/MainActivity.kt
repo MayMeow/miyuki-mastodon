@@ -19,7 +19,9 @@ import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.res.ColorStateList
+import android.graphics.Bitmap
 import android.graphics.Color
+import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Bundle
@@ -32,6 +34,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.content.ContextCompat
 import androidx.core.content.pm.ShortcutManagerCompat
+import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory
 import androidx.emoji.text.EmojiCompat
 import androidx.emoji.text.EmojiCompat.InitCallback
 import androidx.lifecycle.Lifecycle
@@ -42,6 +45,7 @@ import autodispose2.androidx.lifecycle.autoDispose
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.load.resource.gif.GifDrawable
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.target.FixedSizeDrawable
 import com.bumptech.glide.request.transition.Transition
@@ -710,7 +714,7 @@ class MainActivity : BottomSheetActivity(), ActionButtonActivity, HasAndroidInje
     private fun loadDrawerAvatar(avatarUrl: String, showPlaceholder: Boolean) {
         val navIconSize = resources.getDimensionPixelSize(R.dimen.avatar_toolbar_nav_icon_size)
 
-        glide.asDrawable()
+        glide.asGif()
             .load(avatarUrl)
             .transform(
                 RoundedCorners(resources.getDimensionPixelSize(R.dimen.avatar_radius_36dp))
@@ -720,7 +724,7 @@ class MainActivity : BottomSheetActivity(), ActionButtonActivity, HasAndroidInje
                     placeholder(R.drawable.avatar_default)
                 }
             }
-            .into(object : CustomTarget<Drawable>(navIconSize, navIconSize) {
+            .into(object : CustomTarget<GifDrawable>(navIconSize, navIconSize) {
 
                 override fun onLoadStarted(placeholder: Drawable?) {
                     if (placeholder != null) {
@@ -728,7 +732,7 @@ class MainActivity : BottomSheetActivity(), ActionButtonActivity, HasAndroidInje
                     }
                 }
 
-                override fun onResourceReady(resource: Drawable, transition: Transition<in Drawable>?) {
+                override fun onResourceReady(resource: GifDrawable, transition: Transition<in GifDrawable>?) {
                     binding.mainToolbar.navigationIcon = FixedSizeDrawable(resource, navIconSize, navIconSize)
                 }
 
