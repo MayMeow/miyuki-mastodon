@@ -711,6 +711,7 @@ class MainActivity : BottomSheetActivity(), ActionButtonActivity, HasAndroidInje
         val navIconSize = resources.getDimensionPixelSize(R.dimen.avatar_toolbar_nav_icon_size)
 
         glide.asDrawable()
+            .dontAnimate()
             .load(avatarUrl)
             .transform(
                 RoundedCorners(resources.getDimensionPixelSize(R.dimen.avatar_radius_36dp))
