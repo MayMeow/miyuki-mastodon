@@ -35,7 +35,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:drawableStart="@mipmap/ic_launcher"
+                    android:drawableStart="@mipmap/ic_launcher_cat"
                     android:drawablePadding="16dp"
                     android:gravity="center_vertical"
                     android:textColor="?android:attr/textColorPrimary"
